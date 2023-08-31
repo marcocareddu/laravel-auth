@@ -38,6 +38,12 @@
                 del closed source. Siamo i salvatori della mia vita. E così sia, finché la vittoria sia dell'Open source, e
                 non ci
                 siano più closed source, ma pace.</p>
+
+            {{-- To projects Button --}}
+            <div class="mt-5">
+                <a href="{{ route('guest.home') }}" class="btn btn-dark">Progetti</a>
+            </div>
         </div>
+
     </div>
 @endsection
