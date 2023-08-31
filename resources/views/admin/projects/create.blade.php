@@ -12,7 +12,7 @@
             @csrf
 
             <div class="row justify-content-center">
-                <h1 class="mb-3">ADD project</h1>
+                <h1 class="my-3">Aggiungi Progetto</h1>
 
                 {{-- Name --}}
                 <div class="mb-3 col-6">
