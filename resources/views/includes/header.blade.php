@@ -12,10 +12,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link @if (request()->routeIs('home')) active @endif"
+                        href="{{ url('/') }}">Home</a>
                 </li>
             </ul>
 
