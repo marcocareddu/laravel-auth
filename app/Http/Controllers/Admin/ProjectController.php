@@ -68,7 +68,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->update($data);
+        return to_route('admin.projects.show', $project);
     }
 
     /**
@@ -85,5 +87,13 @@ class ProjectController extends Controller
     {
         $projects = Project::onlyTrashed()->get();
         return view('admin.projects.trash', compact('projects'));
+    }
+
+    // Restore Project
+    public function restore(string $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->restore();
+        return to_route('admin.projects.trash');
     }
 }

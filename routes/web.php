@@ -32,6 +32,9 @@ Route::prefix('/admin')->middleware('auth', 'verified')->name('admin.')->group(f
 
     // Admin Projects routes
     Route::resource('projects', ProjectController::class);
+
+    // Restore Projects Route 
+    Route::patch('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
 });
 
 
