@@ -16,8 +16,18 @@
                         </div>
                         <div class="d-flex">
                             <a href="{{ $project->url }}" class="btn btn-dark"><i class="fa-brands fa-github"></i></a>
-                            <a href="#" class="btn btn-warning mx-3"><i class="fa-solid fa-pencil"></i></a>
-                            <a href="#" class="btn btn-danger text-black"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning mx-3"><i
+                                    class="fa-solid fa-pencil"></i></a>
+                            <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary mx-3"><i
+                                    class="fa-solid fa-eye"></i></a>
+
+                            {{-- Delete Button --}}
+                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
+                                class="form-delete">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger text-black"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
