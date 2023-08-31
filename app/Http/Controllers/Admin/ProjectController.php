@@ -23,6 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +31,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // !VALIDATION
+        // $request->validate([
+        //     'title' => 'required|string',
+        //     'thumb' => 'url:http,https',
+        //     'url' => 'url:http,https',
+        //     'description' => ''
+        // ]);
+
+        $data = $request->all();
+        $project = new Project;
+        $project->fill($data);
+        $project->save();
+
+        return to_route('admin.projects.show', $project);
     }
 
     /**
@@ -38,7 +52,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -62,6 +76,14 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.projects.index');
+    }
+
+    // Trash Comic
+    public function trash()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.trash', compact('projects'));
     }
 }
