@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,9 @@ Route::prefix('/')->name('guest.')->group(function () {
 // Admin Route
 Route::prefix('/admin')->middleware('auth', 'verified')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+    // Admin Projects routes
+    Route::resource('projects', ProjectController::class);
 });
 
 
