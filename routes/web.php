@@ -27,6 +27,9 @@ Route::prefix('/')->name('guest.')->group(function () {
 Route::prefix('/admin')->middleware('auth', 'verified')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
 
+    // Trash route
+    Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash');
+
     // Admin Projects routes
     Route::resource('projects', ProjectController::class);
 });
