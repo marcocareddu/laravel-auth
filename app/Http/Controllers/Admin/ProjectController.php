@@ -102,7 +102,9 @@ class ProjectController extends Controller
 
         $data = $request->all();
         $project->update($data);
-        return to_route('admin.projects.show', $project);
+        return to_route('admin.projects.show', $project)
+            ->with('toast-class', 'danger')
+            ->with('toast-message', "Progetto eliminato");
     }
 
     /**
@@ -111,7 +113,9 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')
+            ->with('toast-class', 'success')
+            ->with('toast-message', 'Progetto eliminato');
     }
 
     // Trash Comic

@@ -38,6 +38,9 @@
     {{-- Footer --}}
     @include('includes.footer')
 
+    {{-- Toast --}}
+    @include('includes.layout.toast')
+
     {{-- Scripts --}}
     @yield('scripts')
 

@@ -39,6 +39,7 @@
     </div>
 @endsection
 
+
 @section('scripts')
     @vite('resources/js/prevent-delete.js')
 @endsection
