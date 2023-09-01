@@ -30,11 +30,14 @@ Route::prefix('/admin')->middleware('auth', 'verified')->name('admin.')->group(f
     // Trash route
     Route::get('/projects/trash', [ProjectController::class, 'trash'])->name('projects.trash');
 
-    // Admin Projects routes
-    Route::resource('projects', ProjectController::class);
-
     // Restore Projects Route 
     Route::patch('/projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
+
+    // Drop Projects Route 
+    Route::delete('/projects/{project}/drop', [ProjectController::class, 'drop'])->name('projects.drop');
+
+    // Admin Projects routes
+    Route::resource('projects', ProjectController::class);
 });
 
 
