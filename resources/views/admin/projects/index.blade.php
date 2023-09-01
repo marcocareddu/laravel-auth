@@ -22,8 +22,8 @@
                                     class="fa-solid fa-eye"></i></a>
 
                             {{-- Delete Button --}}
-                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
-                                class="form-delete">
+                            <form class="form-delete" action="{{ route('admin.projects.destroy', $project) }}"
+                                method="POST" class="form-delete">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger text-black"><i class="fa-solid fa-trash-can"></i></button>
@@ -34,4 +34,8 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    @vite('resources/js/prevent-delete.js')
 @endsection

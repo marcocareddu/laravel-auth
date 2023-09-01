@@ -18,10 +18,10 @@
                         <div class="d-flex justify-content-evenly">
 
                             {{-- Delete Button --}}
-                            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                            <form class="form-delete" action="{{ route('admin.projects.drop', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Cancella</button>
+                                <button class="btn btn-danger">Elimina Definitivamente</button>
                             </form>
 
                             {{-- Restore Button --}}
@@ -48,4 +48,8 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    @vite('resources/js/prevent-delete.js')
 @endsection
