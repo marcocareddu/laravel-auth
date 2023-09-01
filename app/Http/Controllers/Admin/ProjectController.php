@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -34,17 +34,20 @@ class ProjectController extends Controller
     {
 
         // !VALIDATION
-        $request->validate([
-            'name' => 'required|string|unique:projects',
-            'thumb' => 'nullable|url:http,https',
-            'url' => 'required|url:http,https',
-            'description' => 'nullable|string',
-        ], [
-            'name.required' => 'Il titolo è obbligatorio',
-            'name.unique' => 'Il titolo è già stato utilizzato',
-            'url.required' => 'L\'URL è obbligatorio',
-            'url.url' => 'L\'URL non è valido',
-        ]);
+        $request->validate(
+            [
+                'name' => 'required|string|unique:projects',
+                'thumb' => 'nullable|url:http,https',
+                'url' => 'required|url:http,https',
+                'description' => 'nullable|string',
+            ],
+            [
+                'name.required' => 'Il nome progetto è obbligatorio',
+                'name.unique' => 'Il titolo è già stato utilizzato',
+                'url.required' => "L'URL è obbligatorio",
+                'url.url' => "L'URL inserito non è valido"
+            ]
+        );
 
 
         $data = $request->all();
@@ -80,7 +83,7 @@ class ProjectController extends Controller
         // !VALIDATION
         $request->validate(
             [
-                'name' => ['required', 'string', Rule::unique('projects')->ignore($project->$id)],
+                'name' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
                 'thumb' => 'nullable|url:http,https',
                 'url' => 'required|url:http,https',
                 'description' => 'nullable|string'
