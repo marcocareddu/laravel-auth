@@ -42,6 +42,10 @@
                         </li>
                     @endif
                 @else
+                    <li class="nav-item me-2">
+                        <a class="btn btn-danger" href="{{ route('admin.projects.trash') }}"><i
+                                class="fa-solid fa-trash-can"></i></a>
+                    </li>
                     <li class="nav-item">
                         <a class="btn btn-success" href="{{ route('admin.projects.create') }}">+</a>
                     </li>
