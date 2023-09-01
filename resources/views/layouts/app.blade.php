@@ -28,11 +28,13 @@
 <body>
 
     {{-- Header --}}
-    @include('includes.header')
-
+    <header class="position-sticky">
+        @include('includes.header')
+    </header>
     {{-- Main --}}
-    @yield('main-content')
-
+    <main class="mt-4">
+        @yield('main-content')
+    </main>
     {{-- Footer --}}
     @include('includes.footer')
 
