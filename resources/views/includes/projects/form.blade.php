@@ -29,6 +29,11 @@
             <input type="text" id="name" name="name"
                 class="form-control @error('name') is-invalid @elseif (old('name')) is-valid @enderror"
                 value="{{ old('name', $project->name) }}" autofocus required>
+            @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         {{-- Description --}}
@@ -44,6 +49,11 @@
                 <input type="url" id="thumb" name="thumb"
                     class="form-control @error('thumb') is-invalid @elseif (old('thumb')) is-valid @enderror"
                     value="{{ old('thumb', $project->thumb) }}" required>
+                @error('thumb')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
         <div class="col-2">
@@ -59,6 +69,11 @@
             <input type="url" id="url" name="url"
                 class="form-control @error('url') is-invalid @elseif (old('url')) is-valid @enderror"
                 value="{{ old('url', $project->url) }}" required>
+            @error('url')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
     </div>
