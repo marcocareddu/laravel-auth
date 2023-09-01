@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Contracts\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -32,12 +32,19 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // !VALIDATION
-        // $request->validate([
-        //     'title' => 'required|string',
-        //     'thumb' => 'url:http,https',
-        //     'url' => 'url:http,https',
-        //     'description' => ''
-        // ]);
+        // $request->validate(
+        //     [
+        //         'title' => 'required|string|unique:projects',
+        //         'thumb' => 'url:http,https',
+        //         'url' => 'required|url:http,https',
+        //         'description' => ''
+        //     ],
+        //     [
+        //         'title.required' => 'Il titolo è obbligatorio',
+        //         'title.unique' => "Il titolo $request->title è obbligatorio",
+        //         'title.required' => 'Il titolo è obbligatorio',
+        //     ]
+        // );
 
         $data = $request->all();
         $project = new Project;
@@ -68,6 +75,22 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+
+        // !VALIDATION
+        // $request->validate(
+        //     [
+        //         'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
+        //         'thumb' => 'url:http,https',
+        //         'url' => 'required|url:http,https',
+        //         'description' => ''
+        //     ],
+        //     [
+        //         'title.required' => 'Il titolo è obbligatorio',
+        //         'title.unique' => "Il titolo $request->title è obbligatorio",
+        //         'title.required' => 'Il titolo è obbligatorio',
+        //     ]
+        // );
+
         $data = $request->all();
         $project->update($data);
         return to_route('admin.projects.show', $project);
