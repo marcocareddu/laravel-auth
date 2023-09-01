@@ -39,7 +39,7 @@
                     <textarea type="text" id="description" name="description" class="form-control">{{ $project->description }}</textarea>
                 </div>
             </div>
-            <button class="btn btn-success">Conferma</button>
+            <button class="btn btn-success">Salva</button>
         </form>
 
     </div>
