@@ -23,7 +23,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $project = new Project();
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
@@ -77,17 +78,20 @@ class ProjectController extends Controller
     {
 
         // !VALIDATION
-        $request->validate([
-            'name' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
-            'thumb' => 'nullable|url:http,https',
-            'url' => 'required|url:http,https',
-            'description' => 'nullable|string',
-        ], [
-            'name.required' => 'Il titolo è obbligatorio',
-            'name.unique' => 'Il titolo è già stato utilizzato',
-            'url.required' => 'L\'URL è obbligatorio',
-            'url.url' => 'L\'URL non è valido',
-        ]);
+        $request->validate(
+            [
+                'name' => ['required', 'string', Rule::unique('projects')->ignore($project->$id)],
+                'thumb' => 'nullable|url:http,https',
+                'url' => 'required|url:http,https',
+                'description' => 'nullable|string'
+            ],
+            [
+                'name.required' => 'Il nome progetto è obbligatorio',
+                'name.unique' => 'Il titolo è già stato utilizzato',
+                'url.required' => "L'URL è obbligatorio",
+                'url.url' => "L'URL inserito non è valido"
+            ]
+        );
 
         $data = $request->all();
         $project->update($data);
