@@ -31,20 +31,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         // !VALIDATION
-        // $request->validate(
-        //     [
-        //         'title' => 'required|string|unique:projects',
-        //         'thumb' => 'url:http,https',
-        //         'url' => 'required|url:http,https',
-        //         'description' => ''
-        //     ],
-        //     [
-        //         'title.required' => 'Il titolo è obbligatorio',
-        //         'title.unique' => "Il titolo $request->title è obbligatorio",
-        //         'title.required' => 'Il titolo è obbligatorio',
-        //     ]
-        // );
+        $request->validate([
+            'name' => 'required|string|unique:projects',
+            'thumb' => 'nullable|url:http,https',
+            'url' => 'required|url:http,https',
+            'description' => 'nullable|string',
+        ], [
+            'name.required' => 'Il titolo è obbligatorio',
+            'name.unique' => 'Il titolo è già stato utilizzato',
+            'url.required' => 'L\'URL è obbligatorio',
+            'url.url' => 'L\'URL non è valido',
+        ]);
+
 
         $data = $request->all();
         $project = new Project;
@@ -77,19 +77,17 @@ class ProjectController extends Controller
     {
 
         // !VALIDATION
-        // $request->validate(
-        //     [
-        //         'title' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
-        //         'thumb' => 'url:http,https',
-        //         'url' => 'required|url:http,https',
-        //         'description' => ''
-        //     ],
-        //     [
-        //         'title.required' => 'Il titolo è obbligatorio',
-        //         'title.unique' => "Il titolo $request->title è obbligatorio",
-        //         'title.required' => 'Il titolo è obbligatorio',
-        //     ]
-        // );
+        $request->validate([
+            'name' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
+            'thumb' => 'nullable|url:http,https',
+            'url' => 'required|url:http,https',
+            'description' => 'nullable|string',
+        ], [
+            'name.required' => 'Il titolo è obbligatorio',
+            'name.unique' => 'Il titolo è già stato utilizzato',
+            'url.required' => 'L\'URL è obbligatorio',
+            'url.url' => 'L\'URL non è valido',
+        ]);
 
         $data = $request->all();
         $project->update($data);
@@ -117,6 +115,14 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->restore();
+        return to_route('admin.projects.trash');
+    }
+
+    // Drop Project
+    public function drop(string $id)
+    {
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->forceDelete();
         return to_route('admin.projects.trash');
     }
 }
