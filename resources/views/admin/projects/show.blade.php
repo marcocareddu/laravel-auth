@@ -7,7 +7,8 @@
         <h1 class="fs-4 text-secondary my-4 text-center">Progetti</h1>
         <div class="row justify-content-center">
             <div class="card col m-3 text-center">
-                <img src="{{ asset('storage/' . $project->thumb) }}" class="card-img-top img-fluid" alt="...">
+                <img src="{{ $project->thumb ? asset('storage/' . $project->thumb) : 'https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg' }}"
+                    class="card-img-top img-fluid" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>
                         <h5 class="card-title">{{ $project->name }}</h5>
