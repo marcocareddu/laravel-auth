@@ -7,7 +7,7 @@
     {{-- Errors management --}}
     @include('includes.error')
     <div class="container">
-        <h1 class="fs-4 text-secondary my-4 text-center">Progetti</h1>
+        <h1 class="fs-4 text-secondary py-4 text-center">Progetti</h1>
         <div class="row justify-content-center">
             @foreach ($projects as $project)
                 <div class="card col-5 m-3">

@@ -1,3 +1,18 @@
 @use "header";
 @use "main";
 @import '~bootstrap/scss/bootstrap';
+
+* {
+    background-color: #1E1E1E;
+    color: #54A7D7;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+h1 {
+    color: #AEB175;
+}
+
+i {
+    background: transparent;
+    color: antiquewhite;
+}

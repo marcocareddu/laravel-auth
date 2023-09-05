@@ -14,12 +14,17 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;1,700&display=swap"
+        rel="stylesheet">
 
     {{-- CDNS --}}
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
         integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=='
         crossorigin='anonymous'>
     @yield('cdns')
+
 
     <!-- Import Resources -->
     @vite(['resources/js/app.js'])
@@ -32,7 +37,7 @@
         @include('includes.header')
     </header>
     {{-- Main --}}
-    <main class="mt-4">
+    <main>
         @yield('main-content')
     </main>
     {{-- Footer --}}
