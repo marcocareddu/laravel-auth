@@ -46,8 +46,7 @@ class ProjectController extends Controller
                 'name.required' => 'Il nome progetto è obbligatorio',
                 'name.unique' => 'Il titolo è già stato utilizzato',
                 'url.required' => "L'URL è obbligatorio",
-                'url.url' => "L'URL inserito non è valido",
-                'thumb.url' => "L'URL inserito non è valido"
+                'url.url' => "L'URL inserito non è valido"
             ]
         );
 
@@ -93,7 +92,7 @@ class ProjectController extends Controller
         $request->validate(
             [
                 'name' => ['required', 'string', Rule::unique('projects')->ignore($project->id)],
-                'thumb' => 'nullable|url:http,https',
+                'thumb' => 'nullable',
                 'url' => 'required|url:http,https',
                 'description' => 'nullable|string'
             ],
@@ -101,9 +100,7 @@ class ProjectController extends Controller
                 'name.required' => 'Il nome progetto è obbligatorio',
                 'name.unique' => 'Il titolo è già stato utilizzato',
                 'url.required' => "L'URL è obbligatorio",
-                'url.url' => "L'URL inserito non è valido",
-                'thumb.required' => "L'URL è obbligatorio",
-                'thumb.url' => "L'URL inserito non è valido"
+                'url.url' => "L'URL inserito non è valido"
             ]
         );
 
