@@ -149,6 +149,7 @@ class ProjectController extends Controller
     public function drop(string $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
+        if ($project->thumb) Storage::delete($project->thumb);
         $project->forceDelete();
         return to_route('admin.projects.trash');
     }
