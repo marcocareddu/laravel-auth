@@ -7,7 +7,7 @@
         <h1 class="fs-4 text-secondary my-4 text-center">Progetti</h1>
         <div class="row justify-content-center">
             <div class="card col m-3 text-center">
-                <img src="" class="card-img-top" alt="...">
+                <img src="{{ asset('storage/' . $project->thumb) }}" class="card-img-top img-fluid" alt="...">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>
                         <h5 class="card-title">{{ $project->name }}</h5>
