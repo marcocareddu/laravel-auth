@@ -41,7 +41,7 @@
 
             {{-- To projects Button --}}
             <div class="mt-5">
-                <a href="{{ route('guest.home') }}" class="btn btn-dark">Progetti</a>
+                <a href="{{ route('guest.home') }}" class="btn btn-outline-purple">Progetti</a>
             </div>
         </div>
 

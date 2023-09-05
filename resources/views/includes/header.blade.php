@@ -4,7 +4,11 @@
             <div class="logo_laravel">
 
             </div>
-            {{ config('app.name', 'Portfolio') }}
+            <div class="d-flex align-items-center me-3">
+                <h4><a class="nav-link @if (request()->routeIs('guest.home*')) active-txt @endif"
+                        href="{{ route('guest.home') }}">Portfolio</a>
+                </h4>
+            </div>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -17,12 +21,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link @if (request()->routeIs('admin.home')) active @endif"
+                    <a class="nav-link @if (request()->routeIs('admin.home')) active-txt @endif"
                         href="{{ route('admin.home') }}">Home</a>
                 </li>
                 @auth
                     <li>
-                        <a class="nav-link @if (request()->routeIs('admin.projects*')) active @endif"
+                        <a class="nav-link @if (request()->routeIs('admin.projects*')) active-txt @endif"
                             href="{{ route('admin.projects.index') }}">Progetti</a>
                     </li>
                 @endauth
@@ -43,11 +47,11 @@
                     @endif
                 @else
                     <li class="nav-item me-2">
-                        <a class="btn btn-danger" href="{{ route('admin.projects.trash') }}"><i
+                        <a class="btn btn-outline-danger" href="{{ route('admin.projects.trash') }}"><i
                                 class="fa-solid fa-trash-can"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-success" href="{{ route('admin.projects.create') }}">+</a>
+                        <a class="btn btn-outline-success" href="{{ route('admin.projects.create') }}">+</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

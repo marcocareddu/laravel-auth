@@ -79,7 +79,7 @@
         </div>
 
     </div>
-    <button class="btn btn-success">
+    <button class="btn btn-outline-success">
         @if ($project->exists)
             {{-- Edit section --}}
             Salva

@@ -21,14 +21,14 @@
                             <form class="form-delete" action="{{ route('admin.projects.drop', $project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Elimina Definitivamente</button>
+                                <button class="btn btn-outline-danger">Elimina Definitivamente</button>
                             </form>
 
                             {{-- Restore Button --}}
                             <form action="{{ route('admin.projects.restore', $project) }}" method="POST">
                                 @csrf
                                 @method('PATCH')
-                                <button class="btn btn-success">Ripristina</button>
+                                <button class="btn btn-outline-success">Ripristina</button>
                             </form>
 
                         </div>
@@ -42,7 +42,7 @@
             <div class="d-flex justify-content-center">
 
                 {{-- All projects Button --}}
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Ritorna ai progetti</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-primary">Ritorna ai progetti</a>
 
             </div>
         </div>
