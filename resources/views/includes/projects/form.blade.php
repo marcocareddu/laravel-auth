@@ -46,7 +46,7 @@
         <div class="col-10 text-start">
             <div class="mb-3">
                 <label class="form-label" for="thumb">Immagine</label>
-                <input type="url" id="thumb" name="thumb"
+                <input type="file" id="thumb" name="thumb"
                     class="form-control @error('thumb') is-invalid @elseif (old('thumb')) is-valid @enderror"
                     value="{{ old('thumb', $project->thumb) }}" required>
                 @error('thumb')
@@ -55,6 +55,7 @@
                     </div>
                 @enderror
             </div>
+
         </div>
         <div class="col-2">
             <div>
