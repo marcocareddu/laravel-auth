@@ -3,6 +3,9 @@
 @section('title', 'Progetti')
 
 @section('main-content')
+
+    {{-- Errors management --}}
+    @include('includes.error')
     <div class="container">
         <h1 class="fs-4 text-secondary my-4 text-center">Progetti</h1>
         <div class="row justify-content-center">
@@ -35,6 +38,7 @@
         </div>
     </div>
 @endsection
+
 
 @section('scripts')
     @vite('resources/js/prevent-delete.js')
