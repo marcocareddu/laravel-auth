@@ -2,7 +2,7 @@
     {{-- Dynamic Section --}}
     @if ($project->exists)
         {{-- Edit section --}}
-        <form method="POST" action="{{ route('admin.projects.update', $project) }}">
+        <form method="POST" action="{{ route('admin.projects.update', $project) }}" enctype="multipart/form-data">
             @method('PUT')
         @else
             {{-- Create section --}}
