@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
@@ -37,7 +38,7 @@ class ProjectController extends Controller
         $request->validate(
             [
                 'name' => 'required|string|unique:projects',
-                'thumb' => 'nullable|url:http,https',
+                'thumb' => 'nullable',
                 'url' => 'required|url:http,https',
                 'description' => 'nullable|string',
             ],
@@ -46,7 +47,6 @@ class ProjectController extends Controller
                 'name.unique' => 'Il titolo è già stato utilizzato',
                 'url.required' => "L'URL è obbligatorio",
                 'url.url' => "L'URL inserito non è valido",
-                'thumb.required' => "L'URL è obbligatorio",
                 'thumb.url' => "L'URL inserito non è valido"
             ]
         );
@@ -54,6 +54,13 @@ class ProjectController extends Controller
 
         $data = $request->all();
         $project = new Project;
+
+        // If thumb exists, save file under images folder & update its path
+        if (array_key_exists('thumb', $data)) {
+            $img_url = Storage::putFile('images', $data['thumb']);
+            $data['thumb'] = $img_url;
+        }
+
         $project->fill($data);
         $project->save();
 
